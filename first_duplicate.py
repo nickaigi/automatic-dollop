@@ -6,13 +6,17 @@ def firstDuplicate(a):
     for i, x in enumerate(a):
         for j, y in enumerate(a[(i + 1):], i+1):
             if x == y:
-                duplicates[x] = j
+                if x in duplicates:
+                    continue
+                else:
+                    duplicates[x] = j
 
-    sorted_list = []
-    for k,v in duplicates.items():
-        sorted_list.append(v)
+    sorted_list = [k for k,v in sorted(duplicates.items(), key=lambda item: item[1])]
+    return sorted_list[0]
 
 
 if __name__ == '__main__':
-    a = [2, 1, 3, 5, 3, 2]
-    print(firstDuplicate(a))
+    #a = [2, 1, 3, 5, 3, 2]
+    #print(firstDuplicate(a))
+    b = [1, 1, 2, 2, 1]
+    print(firstDuplicate(b))
