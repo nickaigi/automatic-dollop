@@ -1,8 +1,10 @@
-def firstNotRepeatingCharacter(s):
-    array = list(s)
-    found_chars = []
+def first_not_repeating_character(s):
+    for c in s:
+        if s.index(c) == s.rindex(c):
+            return c
     return '_'
 
 
 if __name__ == '__main__':
-    pass
+    s = 'abacabad'
+    print(first_not_repeating_character(s))
