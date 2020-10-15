@@ -1,112 +1,35 @@
-def check_rows(grid):
-    for row in range(9):
-        seen = set()
-        for col in range(9):
-            if grid[row][col] != '.':
-                if grid[row][col] in seen:
-                    return False
-                else:
-                    seen.add(grid[row][col])
-    return True
-
-def check_cols(grid):
-    for col in range(9):
-        seen = set()
-        for row in range(9):
-            if grid[row][col] != '.':
-                if grid[row][col] in seen:
-                    return False
-                else:
-                    seen.add(grid[row][col])
+def check_numbers(numbers):
+    seen = set()
+    for num in numbers:
+        if num == '.':
+            continue
+        if num in seen:
+            return False
+        seen.add(num)
     return True
 
 def check_sub_grids(grid):
-    seen_grid_one = set()
-    seen_grid_two = set()
-    seen_grid_three = set()
-    seen_grid_four = set()
-    seen_grid_five = set()
-    seen_grid_six = set()
-    seen_grid_seven = set()
-    seen_grid_eight = set()
-    seen_grid_nine = set()
-
-    for row in range(3):
-        for col in range(3):
-            if grid[row][col] != '.':
-                if grid[row][col] in seen_grid_one:
-                    return False
-                else:
-                    seen_grid_one.add(grid[row][col])
-
-        for col in range(3, 6):
-            if grid[row][col] != '.':
-                if grid[row][col] in seen_grid_two:
-                    return False
-                else:
-                    seen_grid_two.add(grid[row][col])
-
-
-        for col in range(6, 9):
-            if grid[row][col] != '.':
-                if grid[row][col] in seen_grid_three:
-                    return False
-                else:
-                    seen_grid_three.add(grid[row][col])
-
-
-    for row in range(3, 6):
-        for col in range(3):
-            if grid[row][col] != '.':
-                if grid[row][col] in seen_grid_four:
-                    return False
-                else:
-                    seen_grid_four.add(grid[row][col])
-
-        for col in range(3, 6):
-            if grid[row][col] != '.':
-                if grid[row][col] in seen_grid_five:
-                    return False
-                else:
-                    seen_grid_five.add(grid[row][col])
-
-
-        for col in range(6, 9):
-            if grid[row][col] != '.':
-                if grid[row][col] in seen_grid_six:
-                    return False
-                else:
-                    seen_grid_six.add(grid[row][col])
-
-
-    for row in range(6, 9):
-        for col in range(3):
-            if grid[row][col] != '.':
-                if grid[row][col] in seen_grid_seven:
-                    return False
-                else:
-                    seen_grid_seven.add(grid[row][col])
-
-        for col in range(3, 6):
-            if grid[row][col] != '.':
-                if grid[row][col] in seen_grid_eight:
-                    return False
-                else:
-                    seen_grid_eight.add(grid[row][col])
-
-
-        for col in range(6, 9):
-            if grid[row][col] != '.':
-                if grid[row][col] in seen_grid_nine:
-                    return False
-                else:
-                    seen_grid_nine.add(grid[row][col])
+    for row in range(0, 9, 3):
+        for col in range(0, 9, 3):
+            if not check_numbers(
+                grid[row][col:col+3] + grid[row+1][col:col +3] + grid[row+2][col:col+3]
+            ):
+                return False
     return True
 
+        
 def sudoku2(grid):
-    if check_rows(grid) and check_cols(grid) and check_sub_grids(grid):
-        return True
-    return False
+    for row in grid:
+        if not check_numbers(row):
+            return False
+
+    for col in range(9):
+        if not check_numbers([row[col] for row in grid]):
+            return False
+
+    if not check_sub_grids(grid):
+        return False
+    return True
 
 
 if __name__ == '__main__':
