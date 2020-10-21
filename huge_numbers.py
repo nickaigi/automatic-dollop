@@ -5,47 +5,54 @@ class ListNode(object):
         self.next = None
 
 
-def expand_number(node):
-    numbers = []
-    power_of_ten = []
-    while node:
-        numbers.append(node.value)
-        node = node.next
-
-    for i in range(len(numbers)):
-        if i + 1 < len(numbers):
-            if numbers[i+1] >= 1000:
-                power_of_ten.append(0)
-            elif 100 <= numbers[i+1] and numbers[i+1] < 1000:
-                power_of_ten.append(1)
-            elif 10 <= numbers[i+1] and numbers[i+1] < 100:
-                power_of_ten.append(2)
-            else:
-                power_of_ten.append(3)
-        else:
-            power_of_ten.append(0)
-
-    for i in range(len(numbers)):
-        print(f'{numbers[i]} and power={power_of_ten[i]}')
+def reverse_list(head):
+    prev = None
+    current = head
+    while current is not None:
+        next_ = current.next
+        current.next = prev
+        prev = current
+        current = next_
+    return prev
 
 
 def addTwoHugeNumbers(a, b):
-    print('expanding a:')
-    expand_number(a)
-    print('expanding b:')
-    expand_number(b)
+    new_a = reverse_linked_list(a)
+    new_b = reverse_linked_list(b)
+    
+    current_a = new_a
+    current_b = new_b
+    
+    carry = 0
+    new_head = None
+    previous = None
+    
+    while current_a is not None or current_b is not None:
+        current, carry = add_list_element(current_a, current_b, carry)
+        if previous:
+            previous.next = current
+            previous = current
+        if new_head is None:
+            new_head = current
+            previous = current
+        if current_a:
+            current_a = current_a.next
+        if current_b:
+            current_b = current_b.next
+    if carry:
+        current = ListNode(carry)
+        previous.next = current
+    
+    new_head = reverse_linked_list(new_head)
+    
+    reverse_linked_list(new_a)        
+    reverse_linked_list(new_b)        
+    return new_head
 
 
-if __name__ == '__main__':
-    a = ListNode(9876)
-    x = ListNode(5432)
-    y = ListNode(1999)
-
-    a.next = x
-    x.next = y
-
-    b = ListNode(1)
-    i = ListNode(8001)
-    b.next = i
-
-    addTwoHugeNumbers(a, b)
+def add_list_element(num_one, num_two, carry):
+    num_one_val = num_one.value if num_one else 0
+    num_two_val = num_two.value if num_two else 0
+    
+    temp = num_one_val + num_two_val + carry
+    return ListNode(temp % 10000), temp // 1000
