@@ -1,46 +1,41 @@
 # Singly-linked lists are already defined with this interface:
-# class ListNode(object):
-#   def __init__(self, x):
-#     self.value = x
-#     self.next = None
-#
-def print_list(head):
-    current = None
-    previous = None
-    next_ = None
-    while head:
-        print(head.value)
-        head = head.next
+class ListNode(object):
+    def __init__(self, x):
+        self.value = x
+        self.next = None
 
-
-def sort_list(head):
-    pass
-
-
-def merge(small, large):
-    # find small's tail, make its next be large
-    current = small
-    previous = None
-    while current:
-        previous = current
-        current = current.next
-    previous.next = large
- 
-    return sort_list(small)
 
 def mergeTwoLinkedLists(l1, l2):
-    
-    if not l1 and not l2:
-        return None
-    elif l1 and not l2:
-        return l1
-    elif l2 and not l1:
-        return l2
-    if l1 is not None and l2 is not None and l1.value < l2.value:
-        return merge(l1, l2)     
-    elif l1 is not None and l2 is not None and l1.value > l2.value:
-        return merge(l2, l1)
+    l3 = ListNode(None)
+    current = l3
+
+    while l1 and l2:
+        if l1.value <= l2.value:
+            current.next = l1
+            l1 = l1.next
+        else:
+            current.next = l2
+            l2 = l2.next
+        current = current.next
+
+    if l1:
+        current.next = l1
+    elif l2:
+        current.next = l2
+
+    return l3.next
 
 
 if __name__ == '__main__':
-    pass
+    a = ListNode(1)
+    a.next = ListNode(2)
+    a.next.next = ListNode(3)
+
+    b = ListNode(4)
+    b.next = ListNode(5)
+    b.next.next = ListNode(6)
+
+    solution = mergeTwoLinkedLists(b, a)
+    while solution:
+        print(solution.value)
+        solution = solution.next
