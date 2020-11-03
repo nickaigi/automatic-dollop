@@ -5,14 +5,8 @@ def grouping_dishes(dishes):
     for dish in dishes:
         meals[dish[0]] = dish[1:]
 
-    print(meals)
     [[main_ingredients.append(ing) for ing in v if ing not in main_ingredients] for k,v in meals.items()]
-    #for k,v in meals.items():
-    #    for ing in v:
-    #        if ing in main_ingredients:
-    #            continue
-    #        else:
-    #            main_ingredients.append(ing)
+
     print(main_ingredients)
 
 if __name__ == '__main__':
