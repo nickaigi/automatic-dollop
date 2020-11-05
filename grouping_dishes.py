@@ -1,27 +1,14 @@
 def grouping_dishes(dishes):
-    meals = {}
-    temp_solution = []
-    solution = []
-    main_ingredients = []
-    for dish in dishes:
-        meals[dish[0]] = dish[1:]
+    groups = {}
+    for d, *v in dishes:
+        for x in v:
+            groups.setdefault(x, []).append(d)
+    ans = []
+    for x in sorted(groups):
+        if len(groups[x]) >= 2:
+            ans.append([x] + sorted(groups[x]))
+    return ans
 
-    [[main_ingredients.append(ing) for ing in v if ing not in main_ingredients] for k,v in meals.items()]
-    for ing in sorted(main_ingredients, key=str.lower):
-        temp = []
-        temp.append(ing)
-        for d in dishes:
-            if ing in d[1:]:
-                temp.append(d[0])
-        if len(temp) >= 3:
-            temp_solution.append(temp)
-
-    for s in temp_solution:
-        temp = []
-        temp.append(s[0])
-        [temp.append(_) for _ in sorted(s[1:], key=str.lower)]
-        solution.append(temp)
-    return solution
 
 if __name__ == '__main__':
     dishes = [
@@ -32,3 +19,13 @@ if __name__ == '__main__':
     ]
 
     print(grouping_dishes(dishes))
+
+    dishes2 = [
+        ["Pasta", "Tomato Sauce", "Onions", "Garlic"],
+        ["Chicken Curry", "Chicken", "Curry Sauce"],
+        ["Fried Rice", "Rice", "Onions", "Nuts"],
+        ["Salad", "Spinach", "Nuts"],
+        ["Sandwich", "Cheese", "Bread"],
+        ["Quesadilla", "Chicken", "Cheese"]
+    ]
+    print(grouping_dishes(dishes2))
