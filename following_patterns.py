@@ -1,5 +1,5 @@
 def are_following_patterns(strings, patterns):
-    return False
+    return len(set(strings)) == len(set(patterns)) == len(set(zip(strings, patterns)))
 
 
 if __name__ == '__main__':
