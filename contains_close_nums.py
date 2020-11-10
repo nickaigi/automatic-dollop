@@ -5,7 +5,11 @@ def contains_close_nums(nums, k):
 
     for l in groups.values():
         if len(l) > 1:
-            print(l)
+            diff = min([j-i for i, j in zip(l[:-1], l[1:])])
+            if abs(diff) <= k:
+                return True
+    return False
+
 
 if __name__ == '__main__':
     nums = [0, 1, 2, 3, 5, 2]
