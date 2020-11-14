@@ -4,7 +4,7 @@ def swap_lex_order(str_, pairs):
     while True:
         old_len = len(d)
         for x, y in pairs:
-            for s in d.keys():
+            for s in list(d):
                 d[swap(s, x, y)] = True
         if len(d) == old_len:
             return sorted(d)[-1]
