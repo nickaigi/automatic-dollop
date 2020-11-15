@@ -23,3 +23,4 @@ if __name__ == '__main__':
         [3, 4],
     ]
     print(swap_lex_order(str_, pairs))
+    print(swap_lex_order('z', []))
