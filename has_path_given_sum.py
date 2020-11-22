@@ -9,7 +9,7 @@ def has_path_with_given_sum(node, s):
     if node is None:
         return (s == 0)
     else:
-        ans = 0
+        ans = False 
         sub_sum = s - node.value
 
         if sub_sum == 0 and node.left == None and node.right == None:
