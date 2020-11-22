@@ -11,9 +11,10 @@ def inorder(root):
         2. Visit the root
         3. Traverse the right subtree: inorder(right)
     """
-    if node:
+    import pdb; pdb.set_trace()
+    if root:
         inorder(root.left)
-        print (root.value)
+        print(root.value)
         inorder(root.right)
 
 def postorder(root):
@@ -45,3 +46,5 @@ if __name__ == '__main__':
     root = Tree(4)
     root_right = Tree(3)
     root_left = Tree(1)
+
+    inorder(root)
