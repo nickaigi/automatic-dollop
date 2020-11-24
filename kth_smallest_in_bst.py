@@ -6,5 +6,14 @@ class Tree(object):
 
 
 def kth_smallest_in_bst(node, k):
-    pass
-
+    stack = []
+    while root or stack:
+        while root:
+            stack.append(root)
+            root = root.left
+        root = stack.pop()
+        k -= 1
+        if k == 0:
+            break
+        root = root.right
+    return root.value
