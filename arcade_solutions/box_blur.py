@@ -13,7 +13,11 @@ def box_blur(image):
     result = []
     n = len(image)  #!+ we have a n by n matrix
     if n == 3:
-        result.append([sum_sub_image(image)//9])
+        total = sum_sub_image(image)
+        result.append([total // 9])
+    else:
+        sub_images = pow((n - 3) + 1, 2)
+        print(n, sub_images)
 
     return result
 
