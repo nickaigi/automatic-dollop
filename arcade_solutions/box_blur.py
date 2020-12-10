@@ -2,22 +2,26 @@ def sum_sub_image(sub_image):
     """ give a 3x3 matrix ,find the sum of all its elements
     """
     total = 0
-    for row in sub_image:
-        for x in row:
-            total += x
-    return total
+    for row in range(3):
+        for col in range(3):
+            total += sub_image[row][col] 
+    return total // 9
 
 
 def box_blur(image):
     total = 0
     result = []
-    n = len(image)  #!+ we have a n by n matrix
-    if n == 3:
+    rows = len(image)
+    cols = len(image[0])
+    if rows == cols and rows == 3:
         total = sum_sub_image(image)
-        result.append([total // 9])
+        result.append([total])
+    elif rows == cols:
+        sub_images = pow((rows - 3) + 1, 2)
+        print(rows, sub_images)
     else:
-        sub_images = pow((n - 3) + 1, 2)
-        print(n, sub_images)
+        # rows != cols
+        print(rows, cols)
 
     return result
 
