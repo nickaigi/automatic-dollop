@@ -2,30 +2,28 @@ import itertools
 
 
 def strings_rearrangement(a):
-    for perm in itertools.permutations(a):
-        if consecutive_strings_differ_by_one_char(perm):
-            return True
+    permutations = itertools.permutations(a)
+    for elem in permutations:
+        result = True
+        for i in range(len(elem) - 1):
+            if not diff_by_one_char(elem[i], elem[i+1]):
+                result = False
+                break
+        if result:
+            return result
     return False
 
 
-def consecutive_strings_differ_by_one_char(a):
-    iter_input_array = a[:-1]
-    for i, current in enumerate(iter_input_array):
-        next_str = a[i + 1]
-        if not differ_by_one_char(current, next_str):
-            return False
+def diff_by_one_char(s1, s2):
+    diff_count = 0
+    for i in range(len(s1)):
+        if s1[i] != s2[i]:
+            diff_count += 1
+    if diff_count != 1:
+        return False
     return True
 
 
-def differ_by_one_char(s1, s2):
-    result = False
-    for char1, char2 in zip(s1, s2):
-        if char1 != char2:
-            return False
-        else:
-            result = True
-    return result
-
 if __name__ == '__main__':
     a = ['aba', 'bbb', 'bab']
-    print(strings_rearrangement(a))
+    strings_rearrangement(a)
