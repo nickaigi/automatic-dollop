@@ -1,3 +1,9 @@
+import string
+
+
+ALPHABET = string.ascii_lowercase
+
+
 def is_beautiful_string(s):
     pass
 
