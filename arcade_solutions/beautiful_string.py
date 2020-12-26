@@ -6,9 +6,7 @@ ALPHABET = string.ascii_lowercase
 
 def is_beautiful_string(s):
     counts = []
-    for ch in ALPHABET:
-        if ch in s:
-            counts.append(s.count(ch))
+    [counts.append(s.count(ch)) for ch in ALPHABET]
     for i in range(len(counts) - 1):
         if counts[i] < counts[i+1]:
             return False
