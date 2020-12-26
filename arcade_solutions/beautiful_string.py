@@ -4,9 +4,14 @@ import string
 ALPHABET = string.ascii_lowercase
 
 
+def is_beautiful_string_short(s):
+    counts = [s.count(ch) for ch in ALPHABET]
+
+    return counts[::-1] == sorted(counts)
+
+
 def is_beautiful_string(s):
-    counts = []
-    [counts.append(s.count(ch)) for ch in ALPHABET]
+    counts = [s.count(ch) for ch in ALPHABET]
     for i in range(len(counts) - 1):
         if counts[i] < counts[i+1]:
             return False
