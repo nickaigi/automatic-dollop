@@ -5,6 +5,10 @@ def is_mac48_address(s):
     address = s.split('-')
     if len(address) != 6:
         return False
+
+    if len(s) != 17:  #!+ alternative is to check for len(grp) == 2
+        return False
+
     for grp in address:
         for ch in grp:
             if ch not in string.hexdigits:
