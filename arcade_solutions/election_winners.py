@@ -1,5 +1,13 @@
 def election_winners(votes, k):
-    pass
+    max_v = max(votes)
+    winners = 0
+
+    if k == 0 and votes.count(max_v) == 1:
+        return 1
+    for v in votes:
+        if v + k > max_v:
+            winners += 1
+    return winners
 
 
 if __name__ == '__main__':
