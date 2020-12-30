@@ -7,6 +7,8 @@ def can_move(col_delta, row_delta, cell):
     col = cell[0]
     row = int(cell[1])
     new_col_index = COLS.index(col) + col_delta
+    if new_col_index < 0:
+        return False
     new_row = row + row_delta
     new_cell = ''
     try:
