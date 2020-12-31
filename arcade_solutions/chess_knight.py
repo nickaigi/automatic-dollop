@@ -42,10 +42,23 @@ def chess_knight(cell):
     return count
 
 
+def chess_knight_short(cell):
+    moves = 8
+    if cell[0] == 'b' or cell[0] == 'g':
+        moves -= 2
+    if cell[1] == '2' or cell[1] == '7':
+        moves -= 2
+    if cell[0] == 'a' or cell[0] == 'h':
+        moves /= 2
+    if cell[1] == '1' or cell[1] == '8':
+        moves /= 2
+    return int(moves)
+
+
 if __name__ == '__main__':
     cell = 'd5'
-    moves = chess_knight(cell)
+    moves = chess_knight_short(cell)
     print(moves)
     cell = 'a1'
-    moves = chess_knight(cell)
+    moves = chess_knight_short(cell)
     print(moves)
