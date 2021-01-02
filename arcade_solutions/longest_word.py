@@ -1,22 +1,20 @@
-import string
-
-ALPHABET =  string.ascii_lowercase
-
-
 def longest_word(text):
-    words = text.split(' ')
     candidates = []
-    longest = ''
-    if len(words) == 1:
-        return text
-    for w in words:
-        if w.isaplpha():
-            for i, ch in enumerate(w):
-                j = ALPHABET.index(ch.lower())
-                if w[i + 1] == ALPHABET[j+1]:
-                    if w not in candidates:
-                        candidates.append(w)
-    return max(len(w) for w in candidates)
+    word = ''
+    res = ''
+    
+    for char in text:
+        if not char.isalpha():
+            candidates.append(word)
+            word = ''
+        if char.isalpha():
+            word += char
+    candidates.append(word)
+    
+    for i in range(len(candidates)):
+        if len(candidates[i]) > len(res):
+            res = candidates[i]
+    return res
 
 
 if __name__ == '__main__':
