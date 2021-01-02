@@ -17,6 +17,10 @@ def longest_word(text):
     return res
 
 
+def longest_word_short(text):
+    return max(re.split('[^[a-zA-Z]', text), key=len)
+
+
 if __name__ == '__main__':
     text = 'Ready, steady, go!'
     longest_word(text)
