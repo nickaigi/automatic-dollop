@@ -1,9 +1,14 @@
 def different_squares(matrix):
-    digits = [x for sublist in matrix for x in sublist]
-    digits_set = set(digits)
-    if len(digits_set) == 1:
-        return 1
-    print(digits_set)
+    s = set()
+
+    for i in range(len(matrix) - 1):
+        for j in range(len(matrix[i]) - 1):
+            two_by_two = (
+                matrix[i][j], matrix[i][j+1], matrix[i + 1][j], matrix[i+1][j+1]
+            )
+            s.add(two_by_two)
+    return len(s)
+                
 
 
 if __name__ == '__main__':
@@ -15,4 +20,4 @@ if __name__ == '__main__':
         [2, 2, 1],
     ]
 
-    different_squares(matrix)
+    print(different_squares(matrix))
