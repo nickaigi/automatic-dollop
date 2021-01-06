@@ -1,15 +1,12 @@
 def file_naming(names):
     result = []
     for name in names:
-        if name not in result:
-            result.append(name)
-        else:
+        if name in result:
             count = 1
-            new_name = name
-            while new_name in result:
-                new_name = name + f'({count})'
-                count += count
-            result.append(new_name)
+            while f'{name}({count})' in result:
+                count += 1
+            name = f'{name}({count})'
+        result.append(name)
     return result
 
 
