@@ -1,5 +1,7 @@
 def seats_in_theater(nCols, nRows, col, row):
-    pass
+    rows_blocked = nRows - row
+    cols_blocked = nCols - col + 1  # you block the col you are on
+    return rows_blocked * cols_blocked
 
 
 if __name__ == '__main__':
