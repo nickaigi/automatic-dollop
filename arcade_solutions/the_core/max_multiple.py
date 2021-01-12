@@ -6,6 +6,10 @@ def max_multiple(divisor, bound):
     return n
 
 
+def max_multiple(divisor, bound):
+    return bound - (bound % divisor)
+
+
 if __name__ == '__main__':
     divisor = 3
     bound = 10
