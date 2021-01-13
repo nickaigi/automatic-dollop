@@ -8,6 +8,7 @@ def phone_call(min1, min2_10, min11, bal):
         minutes += 9
     else:
         minutes += (bal // min2_10)
+        bal = -1
 
     if bal > min11:
         minutes += (bal // min11)
@@ -19,4 +20,5 @@ if __name__ == '__main__':
     min2_10 = 1
     min11 = 2
     s = 20
-    phone_call(min1, min2_10, min11, s)
+    minutes = phone_call(min1, min2_10, min11, s)
+    print(minutes)
