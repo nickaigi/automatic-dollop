@@ -1,5 +1,5 @@
 def reach_next_level(xp, threshold, reward):
-    return False
+    return xp + reward >= threshold
 
 
 if __name__ == '__main__':
