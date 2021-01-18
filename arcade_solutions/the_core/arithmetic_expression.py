@@ -1,2 +1,2 @@
 def arithmetic_expression(a, b, c):
-    pass
+    return c in [a+b, a-b, a*c, a/b]
