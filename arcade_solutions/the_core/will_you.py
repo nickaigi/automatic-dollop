@@ -1,2 +1,2 @@
 def will_you(young, beautiful, loved):
-    return False
+    return (young and beautiful) != loved
