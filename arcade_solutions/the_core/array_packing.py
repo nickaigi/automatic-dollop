@@ -1,11 +1,7 @@
 def array_packing(a):
-    result = ''
-    for num in a:
-       result += '{0:b}'.format(num)
-
-    return int(result, 2)
+    return sum([n << 8 * i for i, n in enumerate(a)])
 
 
 if __name__ == '__main__':
     a = [24, 85, 0]
-    array_packing(a)
+    print(array_packing(a))
