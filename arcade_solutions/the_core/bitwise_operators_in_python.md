@@ -52,4 +52,6 @@ NB: Python doesn't support `unsigned integers` All numbers have an implicit sign
 
 ### Left Shift
 
+The bitwise left shift operator `(<<)` moves the bits of its first operand to the left by the number of places specified in its second operand.
+
 Todo
