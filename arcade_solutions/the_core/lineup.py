@@ -15,6 +15,17 @@ def line_up(cmds):
     return temp
 
 
+def line_up_short(cmds):
+    weird = False
+    total = 0
+    for c in cmds:
+        if c == 'L' or c == 'R':
+            weird = not weird
+        if not weird:
+            total += 1
+    return total
+
+
 if __name__ == '__main__':
     cmds = 'LLARL'
     print(line_up(cmds))
