@@ -1,9 +1,18 @@
 def line_up(cmds):
-    count = 0
-    for cmd in cmds:
-        if cmd == 'A':
-            count += 1
-    return count
+    size = len(cmds)
+    deg = 0
+    temp = 0
+    for i in range(0, size):
+        if cmds[i] == 'L':
+            deg += -90
+        elif cmds[i] == 'R':
+            deg += 90
+        elif cmds[i] == 'A':
+            deg += 180
+        if deg % 180 == 0:
+            temp += 1
+            deg = 0
+    return temp
 
 
 if __name__ == '__main__':
