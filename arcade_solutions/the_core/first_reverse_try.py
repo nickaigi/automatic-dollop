@@ -1,4 +1,4 @@
-def first_reverse_try(arr):
+def first_reverse_old(arr):
     result = []
     if arr:
         l = len(arr)
@@ -12,3 +12,9 @@ def first_reverse_try(arr):
             else:
                 result.append(arr[i])
     return result
+
+
+def first_reverse_try(arr):
+    if len(arr) > 1:
+        arr[0], arr[-1] = arr[-1], arr[0]
+    return arr
