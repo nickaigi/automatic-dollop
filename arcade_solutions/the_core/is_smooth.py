@@ -15,6 +15,10 @@ def is_smooth(arr):
     return False
 
 
+def is_smooth_short(arr):
+    return sum(arr[(len(arr) -1)//2:len(arr)//2+1]) == arr[0] == arr[-1]
+
+
 if __name__ == '__main__':
     arr = [7, 2, 2, 5, 10, 7]
-    print(is_smooth(arr))
+    print(is_smooth_short(arr))
