@@ -1,5 +1,5 @@
 def replace_middle(arr):
-    pass
+    return arr
 
 
 if __name__ == '__main__':
