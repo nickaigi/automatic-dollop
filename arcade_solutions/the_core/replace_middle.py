@@ -15,6 +15,14 @@ def replace_middle(arr):
     return arr
 
 
+def replace_middle_short(arr):
+    n = len(arr)
+    if not n & 1:
+        mid = arr[n//2] + arr[n//2 -1]
+        arr[n//2-1:n//2+1] = [mid]
+    return arr
+
+
 if __name__ == '__main__':
     arr = [7, 2, 2, 5, 10, 7]
-    print(replace_middle(arr))
+    print(replace_middle_short(arr))
