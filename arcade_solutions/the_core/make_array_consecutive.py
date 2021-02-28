@@ -7,3 +7,7 @@ def make_array_consecutive(arr):
         if i not arr:
             count += 1
     return count
+
+
+def make_array_consecutive(arr):
+    return max(arr) - min(arr) - len(arr) + 1
