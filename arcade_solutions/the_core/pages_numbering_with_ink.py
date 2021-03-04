@@ -1,8 +1,8 @@
 def pages_numbering_with_ink(current, num_of_digits):
     remaining = num_of_digits
-    for i in range(current, current + num_of_digits):
-        x = len(str(i))
+    current -= 1  # we have to print the current page
+    while remaining > 0:
+        current += 1
+        x = len(str(current))
         remaining -= x
-        if remaining < 0:
-            return i
-    return 0
+    return current
