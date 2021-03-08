@@ -1,16 +1,13 @@
+import itertools
+
+
 def comfortable_numbers(l, r):
-    pair = []
-    pair_count = 0
-    for i in range(l, r+1):
-        s = 0
-        temp = i
-        while temp:
-            s += temp % 10
-            temp //= 10
-        for j in range(i-s, i+s+1):
-            if i < j <= r:
-                pair.append([i, j])
-            if j < 1:
-                if [j, i] in pair:
-                    pair_count += 1
-    return pair_count
+    def is_comfortable(a, b):
+        s = sum(int(d) for d in str(a))
+        return a - s <= b <= a + s
+
+    count = 0
+    for a, b in itertools.combinations(range(l, r + 1), 2):
+        if is_comfortable(a, b) and is_comfortable(b, a):
+            count += 1
+    return count
