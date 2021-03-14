@@ -1,3 +1,2 @@
 def find_email_domain(address):
-    i = address.index('@')
-    return address[i+1:]
+    return address[address.rfind('@') + 1:]
