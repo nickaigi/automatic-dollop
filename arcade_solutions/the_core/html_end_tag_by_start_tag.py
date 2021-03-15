@@ -1,2 +1,2 @@
 def html_end_tag_by_start_tag(tag):
-    pass
+    return '</' + tag[1: tag.find(' ')] + '>'
