@@ -1,2 +1,4 @@
-def is_unstable_pair(file_name1, file_name2):
-    pass
+def is_unstable_pair(a, b):
+    if len(a) == len(b):
+        return False
+    return True
