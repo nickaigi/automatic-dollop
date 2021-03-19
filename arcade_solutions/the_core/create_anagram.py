@@ -1,13 +1,9 @@
 def create_anagram(s, t):
-    count = 0
-    found = set()
-    for ch in s:
-        if ch not in found:
-            found.update(ch)
-            if t.count(ch) != s.count(ch):
-                count += abs(t.count(ch) - s.count(ch))
-    return count
-
+    s = list(s)
+    for ch in t:
+        if ch in s:
+            s.remove(ch)
+    return len(s)
 
 
 if __name__ == '__main__':
