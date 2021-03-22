@@ -1,5 +1,5 @@
 def numbers_grouping(a):
-    return 0
+    return len(set([(x-1)//10000 for x in a])) + len(a)
 
 
 if __name__ == '__main__':
