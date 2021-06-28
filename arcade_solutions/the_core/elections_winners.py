@@ -1,12 +1,7 @@
 def elections_winners(votes, k):
     count = 0
-    if k == 0 and votes.count(max(votes)) == 1:
-        return 1
-
     for i, v in enumerate(votes):
-        temp = votes.copy()
-        temp[i] = v + k
-        if temp.count(max(temp)) == 1:
+        if v + k > max(votes[0:i] + votes[i+1:]):
             count += 1
     return count
 
