@@ -1,5 +1,13 @@
+import string
+
+
 def timed_reading(max_length, text):
-    return 0
+    count = 0
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    for w in text.split(' '):
+        if w and len(w) <= max_length:
+            count += 1
+    return count
 
 
 if __name__ == '__main__':
