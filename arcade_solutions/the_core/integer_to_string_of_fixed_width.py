@@ -1,4 +1,8 @@
 def integer_to_string_of_fixed_width(number, width):
+    return str(number).zfill(width)[-width:]
+
+
+def integer_to_string_of_fixed_width_old(number, width):
     s = str(number)
     if len(s) == width:
         return s
