@@ -1,5 +1,8 @@
 def are_similar(a, b):
-    return a == b  or False
+    for x in range(len(a)):
+        if a[x] != b[x]:
+            return False
+    return True
 
 
 if __name__ == '__main__':
