@@ -1,8 +1,5 @@
 def are_similar(a, b):
-    for x in range(len(a)):
-        if a[x] != b[x]:
-            return False
-    return True
+    return sorted(a) == sorted(b) and sum(i != j for i, j in zip(a, b)) < 3
 
 
 if __name__ == '__main__':
