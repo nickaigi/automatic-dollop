@@ -1,12 +1,19 @@
-import re
-
-
 def ada_number(line):
-    parts = [_ for _ in line.split('#')]
-    for s in parts:
-        if not re.match('[0-9a-fA-F]+', s):
+    line = line.replace('_', '')
+    if line.isdigit():
+        return True
+    try:
+        b , n = line.split('#')[:-1]
+        if int(b) < 2 or int(b) > 16:
             return False
-    return True
+        try:
+            int(n, int(b))
+            return True
+        except ValueError:
+            return False
+    except ValueError:
+        return False
+        
 
 
 if __name__ == '__main__':
