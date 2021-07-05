@@ -2,6 +2,16 @@ import string
 
 
 def new_numeral_system(number):
+    s = string.ascii_uppercase
+    i = s.find(number)
+    d = []
+    for x, y in zip(s[:i+1], reversed(s[:i+1])):
+        if x <= y:
+            d.append(f'{x} + {y}')
+    return d
+
+
+def new_numeral_system_old(number):
     if number == 'A':
         return ['A + A']
     char_value = {
