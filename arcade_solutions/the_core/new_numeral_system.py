@@ -1,7 +1,10 @@
 import string
 
 def new_numeral_system(number):
-    alphabet = string.ascii_uppercase
+    alphabet = {}
+    for i, char in enumerate(string.ascii_uppercase):
+        alphabet[char] = i
+    print(alphabet[number])
     return ["0"]
 
 
