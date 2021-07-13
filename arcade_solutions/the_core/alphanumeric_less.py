@@ -1,17 +1,16 @@
 def tokenize(s):
-    tokens = []
-    for c in s:
-        pass
-    return tokens
+    return [c for c in s]
 
 
 def alphanumeric_less(s1, s2):
     t1 = tokenize(s1)
     t2 = tokenize(s2)
+    print(t1, t2)
 
     for x, y in zip(t1, t2):
-        pass
-    return False
+        if x != y:
+            return False
+    return True
 
 
 
