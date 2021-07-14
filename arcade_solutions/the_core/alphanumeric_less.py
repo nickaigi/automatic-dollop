@@ -1,18 +1,19 @@
+import re
+
+
 def tokenize(s):
-    return [c for c in s]
+    tokens = re.findall('\d+|.', s)
+    return (
+        [
+            (0, int(token)) if token.isdigit() else (1, token) for token in tokens
+        ],
+        [-len(token) for token in tokens]
+    )
 
 
 def alphanumeric_less(s1, s2):
-    t1 = tokenize(s1)
-    t2 = tokenize(s2)
-    print(t1, t2)
-
-    for x, y in zip(t1, t2):
-        if x != y:
-            return False
-    return True
-
-
+    return tokenize(s1) < tokenize(s2)
+    
 
 if __name__ == '__main__':
     s1 = 'a'
