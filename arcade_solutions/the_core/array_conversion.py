@@ -1,8 +1,25 @@
+import math
+
+
+def prod_arr(arr):
+    return [math.prod(arr[i: i+2]) for i in range(0, len(arr), 2)]
+
+
+def sum_arr(arr):
+    return [sum(arr[i: i+2]) for i in range(0, len(arr), 2)]
+
+
 def array_conversion(arr):
-    res = 0
-    for i, x in enumerate(arr):
-        print(i, x)
-    return 0
+    new_arr = arr
+    is_odd = True
+    while len(new_arr) != 1:
+        if is_odd:
+            new_arr = sum_arr(new_arr)
+            is_odd = False
+        else:
+            new_arr = prod_arr(new_arr)
+            is_odd = True
+    return new_arr[0]
 
 
 if __name__ == '__main__':
