@@ -1,19 +1,11 @@
-def last_small(arr, current):
-    l = len(arr)
-    smallest = -1
-    if l < 1:
-        return smallest
-    if arr[l - 1] < current:
-        smallest = arr[l - 1]
-    return smallest
-
-
 def array_previous_less(items):
-    new_arr = []
+    less = [-1 for _ in items]
     for i in range(len(items)):
-        new_arr.append(last_small(items[:i], items[i]))
-    return new_arr
-
+        for j in range(i-1, -1, -1):
+            if items[i] > items[j]:
+                less[i] = items[j]
+                break
+    return less
 
 if __name__ == '__main__':
     items = [3, 5, 2, 4, 5]
