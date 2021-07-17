@@ -1,13 +1,11 @@
 def pair_of_shoes(shoes):
     shoes_dict = {}
-    for s in shoes:
-        if s[0] in shoes_dict.keys():
-            shoes_dict[s[0]].append(s[1])
+    for pair in shoes:
+        if pair[1] in shoes_dict:
+            shoes_dict[pair[1]].append(pair[0])
         else:
-            shoes_dict[s[0]] = [s[1]]
-    for p in shoes_dict:
-        if len(shoes_dict[p]) != 2:
-            return False
+            shoes_dict[pair[1]] = [pair[0]]
+    print(shoes_dict)
     return True
 
 
