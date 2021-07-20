@@ -1,24 +1,31 @@
-def check_for_carry(a1, a2):
-    res = []
-    for x, y in zip(a1, a2):
-        if x == 1 and y == 1:
-            # carry
-            pass
-        else:
-            pass
+def mask(s):
+    res  = 0
+    for c in s:
+        digit = 1 if c == '*' else 0
+        res = (res << 1) + digit
     return res
 
 
-def gen_array(s):
-    return [1 if c == '*' else 0 for c in s]
-
-
 def combs(c1, c2):
-    c1 = gen_array(c1)
-    c2 = gen_array(c2)
-    for x, y in zip(c1, c2):
-        print(x, y)
-    return 0
+    l1 = len(c1)
+    l2 = len(c2)
+
+    res = l1 + l2
+
+    m1 = mask(c1)
+    m2 = mask(c2)
+
+    for i in range(l1):
+        if m2 << i & m1 == 0:
+            tmp = max(l2 + i, l1)
+            res = min(res, tmp)
+
+    for i in range(l2):
+        if m1 << i & m2 == 0:
+            tmp = max(l1 + i, l2)
+            res = min(res, tmp)
+
+    return res
 
 
 if __name__ == '__main__':
