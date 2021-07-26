@@ -1,4 +1,6 @@
 def beautiful_text(s, l, r):
+    for i, c in enumerate(s):
+        print(i, c)
     return False
 
 
