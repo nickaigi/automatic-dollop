@@ -1,6 +1,12 @@
 def beautiful_text(s, l, r):
-    for i, c in enumerate(s):
-        print(i, c)
+    for w in range(l, r+1):
+        i = w
+        while i < len(s):
+            if s[i] != ' ':
+                break
+            i += w + 1
+        if i == len(s):
+            return True
     return False
 
 
