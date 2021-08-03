@@ -1,5 +1,6 @@
 def extract_matrix_column(m, c):
-    pass
+    return [m[i][c] for i in range(len(m))]
+
 
 if __name__ == '__main__':
     matrix = [
