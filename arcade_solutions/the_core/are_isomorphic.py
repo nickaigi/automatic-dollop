@@ -1,5 +1,5 @@
 def are_isomorphic(a1, a2):
-    return False
+    return [len(i) for i in a1] == [len(i) for i in a2]
 
 
 if __name__ == '__main__':
