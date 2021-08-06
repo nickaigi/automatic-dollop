@@ -1,14 +1,9 @@
-def reverse_on_diagonals(matrix):
-    size = len(matrix) - 1
+def reverse_on_diagonals(m):
+    for i in range(len(m) // 2):
+        m[i][i], m[-i-1][-i-1] = m[-i-1][-i-1], m[i][i]
+        m[i][-i-1], m[-i-1][i] = m[-i-1][i], m[i][-i-1]
+    return m
 
-    first_diag = []
-    second_diag = []
-
-    for i in range(len(matrix)):
-        first_diag.append(matrix[i][i])
-        second_diag.append(matrix[i][size])
-        size -= 1
-    return first_diag, second_diag
 
 if __name__ == '__main__':
     matrix = [
