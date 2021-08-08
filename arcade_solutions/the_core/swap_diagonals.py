@@ -1,6 +1,6 @@
 def swap_diagonals(m):
-    for i in range(len(m) // 2):
-        print(m[i])
+    for i in range(len(m)):
+        m[i][i], m[i][-i-1] = m[i][-i-1], m[i][i]
     return m
 
 
