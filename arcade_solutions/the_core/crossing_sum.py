@@ -1,7 +1,5 @@
 def crossing_sum(m, a, b):
-    row = [i for i in m[a]]
-    col = [m[i][b] for i in range(len(m)) if i != a]
-    return sum(row) + sum(col)
+    return sum(m[a]) + sum([i[b] for i in m]) - m[a][b]
 
 
 if __name__ == '__main__':
