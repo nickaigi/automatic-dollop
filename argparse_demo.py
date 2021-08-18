@@ -2,8 +2,11 @@ import math
 import argparse
 
 parser = argparse.ArgumentParser(description='Calculate volue of a Cylinder')
-parser.add_argument('radius', type=int, help='Radius of Cylinder')
-parser.add_argument('height', type=int, help='Height of Cylinder')
+
+# parser.add_argument('radius', type=int, help='Radius of Cylinder')  # positional arguments
+# parser.add_argument('height', type=int, help='Height of Cylinder')
+parser.add_argument('-r', '--radius', type=int, help='Radius of Cylinder')
+parser.add_argument('-H', '--height', type=int, help='Height of Cylinder')
 args = parser.parse_args()
 
 def cylinder_volume(radius, height):
