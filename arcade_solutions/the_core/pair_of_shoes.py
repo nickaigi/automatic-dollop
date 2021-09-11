@@ -1,13 +1,12 @@
 def pair_of_shoes(shoes):
-    shoes_dict = {}
-    for pair in shoes:
-        if pair[1] in shoes_dict:
-            shoes_dict[pair[1]].append(pair[0])
+    a = []
+    b = []
+    for s in shoes:
+        if s[0] == 0:
+            a.append(s[1])
         else:
-            shoes_dict[pair[1]] = [pair[0]]
-    print(shoes_dict)
-    return True
-
+            b.append(s[1])
+    return sorted(a) == sorted(b)
 
 if __name__ == '__main__':
     shoes = [
