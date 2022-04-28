@@ -11,7 +11,6 @@ def inorder(root):
         2. Visit the root
         3. Traverse the right subtree: inorder(right)
     """
-    import pdb; pdb.set_trace()
     if root:
         inorder(root.left)
         print(root.value)
@@ -21,7 +20,7 @@ def postorder(root):
     """
     Postorder BST traversal:
         1. Traverse left subtree: postorder(left)
-        2. Traverse left subtree: postorder(left)
+        2. Traverse right subtree: postorder(right)
         3. Visit the root
     """
     if root:
